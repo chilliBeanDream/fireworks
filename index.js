@@ -3,7 +3,7 @@ const BG_COLOUR = '#222222';
 function setup() {
   createCanvas(600, 400);
 
-  firework = new Rocket();
+  firework = new Firework();
 }
 
 function draw() {
