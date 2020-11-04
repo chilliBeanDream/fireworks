@@ -3,7 +3,11 @@ const BG_COLOUR = '#222222';
 function setup() {
   createCanvas(600, 400);
 
-  firework = new Firework();
+  fireworks = [];
+
+  for (let i = 0; i < 10; i++) {
+    fireworks.push(new Firework());
+  }
 }
 
 function draw() {
@@ -11,5 +15,7 @@ function draw() {
   translate(300, 400);
   scale(1, -1);
 
-  firework.fire();
+  for (let i = 0; i < fireworks.length; i++){
+    fireworks[i].fire();
+  }
 }

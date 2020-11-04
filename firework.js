@@ -1,6 +1,6 @@
 const Firework = function () {
   this.counter = 0;
-  this.fuseTime = 90;
+  this.fuseTime = randomIntBetween(80, 140);
   this.rocket = new Particle(
     randomStartPosition(),
     randomStartVelocity(),
@@ -24,7 +24,7 @@ Firework.prototype.fire = function () {
 
 Firework.prototype.explodeIfTime = function () {
   if (this.counter > this.fuseTime && !this.debris.length) {
-    const numberOfDebris = randomInt();
+    const numberOfDebris = randomIntBetween(8, 16);
     const angle = Math.floor(360.0 / numberOfDebris);
     for (let i = 0; i < numberOfDebris; i++) {
       const ip = createVector(this.rocket.position.x, this.rocket.position.y);
@@ -38,9 +38,28 @@ Firework.prototype.explodeIfTime = function () {
 };
 
 function randomPrimaryColor() {
-  const r = 200;
-  const g = 0;
-  const b = 0;
+  const col = 200;
+  let r = 0;
+  let g = 0;
+  let b = 0;
+  switch (Math.floor(Math.random() * 3)) {
+    case 0:
+      r = col;
+      g = 0;
+      b = 0;
+      break;
+    case 1:
+      r = 0;
+      g = col;
+      b = 0;
+      break;
+    case 2:
+      r = 0;
+      g = 100;
+      b = col;
+      break;
+  }
+
   return color(r, g, b)
 }
 
@@ -59,6 +78,6 @@ function randomSigned() {
   return 1 - (2 * Math.random());
 }
 
-function randomInt() {
-  return Math.floor(5 + 10 * Math.random());
+function randomIntBetween(low, high) {
+  return Math.floor(low + (high - low) * Math.random());
 }

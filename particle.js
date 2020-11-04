@@ -1,5 +1,4 @@
 const Particle = function(position, velocity, color) {
-  this.name = Math.floor(Math.random() * 30);
   this.position = position;
   this.velocity = velocity;
   this.color = color;
